@@ -1,5 +1,6 @@
 Este repositorio es una API REST para un proyecto de e-commerce con el proposito de aprender :D.
 Este backend esta echo en enteramente en Go.
+
 Algunas caracteristicas de la implementacion:
 - Estructura modular, mediante de la implementacion de interfaces,
 - Routing: gorilla/mux
