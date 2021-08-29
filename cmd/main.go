@@ -1,13 +1,14 @@
 package main
 
 import (
-	"ecommerce-back/internal/logs"
-	"ecommerce-back/rest"
 	"log"
+
+	"github.com/fbettic/ecommerce-back/internal/logs"
+	"github.com/fbettic/ecommerce-back/rest"
 )
 
 func main() {
 	_ = logs.InitLogger()
 	log.Println("Starting API")
-	rest.Start(":3001")
+	rest.Start()
 }

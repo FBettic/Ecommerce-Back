@@ -1,16 +1,15 @@
 package rest
 
 import (
-	"ecommerce-back/internal/database"
-	"ecommerce-back/internal/logs"
-	"ecommerce-back/products"
-	"fmt"
 	"log"
 	"os"
 
+	"github.com/fbettic/ecommerce-back/internal/database"
+	"github.com/fbettic/ecommerce-back/internal/logs"
+	"github.com/fbettic/ecommerce-back/products"
+
 	migration "github.com/golang-migrate/migrate/database/mysql"
 	_ "github.com/golang-migrate/migrate/source/file"
-	"github.com/joho/godotenv"
 
 	"github.com/golang-migrate/migrate"
 )
@@ -20,26 +19,13 @@ const (
 	migrationsScriptsVersion = 1
 )
 
-// Cargar del archivo llamado ".env"
-var _ = godotenv.Load("rest/.env")
-
-// Extraemos los valores almacenados en el .env
-var (
-	ConnectionString = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
-		os.Getenv("user"),
-		os.Getenv("pass"),
-		os.Getenv("host"),
-		os.Getenv("port"),
-		os.Getenv("db_name"))
-)
-
 var productsHandler = products.ProductHandler{}
 
-func Start(port string) {
+func Start() {
 
 	log.Println("Connecting to database")
 
-	db := database.GetDB(ConnectionString)
+	db := database.GetDB()
 	productsHandler = products.GetProductHandler(db)
 
 	// Listo, aquí ya podemos usar a db!
@@ -49,7 +35,7 @@ func Start(port string) {
 
 	log.Println("Starting Router")
 
-	Router(port)
+	Router(os.Getenv("PORT"))
 }
 
 func doMigrate(client *database.MySQL, dbName string) {

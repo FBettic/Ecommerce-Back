@@ -1,13 +1,14 @@
 package rest
 
 import (
-	"ecommerce-back/internal/logs"
-	"ecommerce-back/products"
 	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
+
+	"github.com/fbettic/ecommerce-back/internal/logs"
+	"github.com/fbettic/ecommerce-back/products"
 
 	"github.com/gorilla/mux"
 )
@@ -25,8 +26,7 @@ func Router(port string) {
 	router.HandleFunc("/products/{id}", updateProductHandler).Methods("PUT")
 	router.HandleFunc("/products/{id}", deleteProductHandler).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(port, router))
-	log.Println("Router Successfully Started")
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
 
 func getProductHandler(w http.ResponseWriter, r *http.Request) {

@@ -1,8 +1,8 @@
 package products
 
 import (
-	"ecommerce-back/internal/database"
-	"ecommerce-back/internal/logs"
+	"github.com/fbettic/ecommerce-back/internal/database"
+	"github.com/fbettic/ecommerce-back/internal/logs"
 )
 
 type ProductHandlerInterface interface {
