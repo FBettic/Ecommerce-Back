@@ -1,11 +1,11 @@
-Este repositorio es una API REST para un proyecto de e-commerce con el proposito de aprender :D.
-Este backend esta echo en enteramente en Go.
+This repository is a REST API for an e-commerce project for learning purposes :D.
+This backend is made entirely in Go.
 
-Algunas caracteristicas de la implementacion:
-- Estructura modular, mediante de la implementacion de interfaces,
+Some features of the implementation:
+- Modular structure, through the implementation of interfaces,
 - Routing: gorilla/mux
 - Logger: uber-go/zap
-- Coneccion a la base de datos: go-sql-driver/mysql
+- Database connection: go-sql-driver/mysql
 - DotEnv: joho/godotenv
 
-(Proyecto aun en curso)
+(Project still in progress)
