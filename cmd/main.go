@@ -9,5 +9,5 @@ import (
 func main() {
 	_ = logs.InitLogger()
 	log.Println("Starting API")
-	rest.Start("8080")
+	rest.Start(":3001")
 }
