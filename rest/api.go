@@ -31,7 +31,7 @@ func Start() {
 	// Listo, aquí ya podemos usar a db!
 	log.Println("successful connection")
 
-	doMigrate(db, "prod_db")
+	doMigrate(db, os.Getenv("DATABASE_NAME"))
 
 	log.Println("Starting Router")
 
