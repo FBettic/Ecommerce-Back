@@ -2,6 +2,8 @@ module github.com/fbettic/ecommerce-back
 
 go 1.17
 
+// +heroku goVersion go1.17
+
 require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang-migrate/migrate v3.5.4+incompatible

@@ -18,7 +18,7 @@ func GetDB() *MySQL {
 
 	log.Println("Connecting to database")
 
-	db, err := sql.Open("mysql", os.Getenv("CLEARDB_DATABASE_URL"))
+	db, err := sql.Open("mysql", os.Getenv("DATABASE_URL"))
 
 	if err != nil {
 		logs.Log().Errorf("Cannot create db tenant: %s", err.Error())
