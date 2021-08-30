@@ -35,7 +35,7 @@ func Start() {
 
 	log.Println("Starting Router")
 
-	Router(os.Getenv("PORT"))
+	Router("3001")
 }
 
 func doMigrate(client *database.MySQL, dbName string) {
