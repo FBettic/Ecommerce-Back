@@ -23,13 +23,11 @@ var productsHandler = products.ProductHandler{}
 
 func Start() {
 
-	log.Println("Connecting to database")
-
 	db := database.GetDB()
 	productsHandler = products.GetProductHandler(db)
 
 	// Listo, aquí ya podemos usar a db!
-	log.Println("successful connection")
+	log.Println("Successful connection")
 
 	doMigrate(db, os.Getenv("DATABASE_NAME"))
 
@@ -52,9 +50,9 @@ func doMigrate(client *database.MySQL, dbName string) {
 	}
 
 	current, _, _ := m.Version()
-	logs.Log().Infof("current migrations version in %d", current)
+	logs.Log().Infof("Current migrations version in %d", current)
 	err = m.Migrate(migrationsScriptsVersion)
 	if err != nil && err.Error() == "no change" {
-		logs.Log().Info("no migration needed")
+		logs.Log().Info("No migration needed")
 	}
 }
