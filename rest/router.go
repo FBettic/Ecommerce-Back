@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/fbettic/ecommerce-back/internal/logs"
@@ -12,8 +13,6 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
-const AllowedCORSDomain = "http://localhost"
 
 func Router(port string) {
 	router := mux.NewRouter().StrictSlash(true)
@@ -131,7 +130,7 @@ func deleteProductHandler(w http.ResponseWriter, r *http.Request) {
 
 func enableCORS(router *mux.Router) {
 	router.PathPrefix("/").HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", AllowedCORSDomain)
+		w.Header().Set("Access-Control-Allow-Origin", os.Getenv("CORS_DOM"))
 	}).Methods(http.MethodOptions)
 	router.Use(middlewareCors)
 }
@@ -140,7 +139,7 @@ func middlewareCors(next http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, req *http.Request) {
 			// Just put some headers to allow CORS...
-			w.Header().Set("Access-Control-Allow-Origin", AllowedCORSDomain)
+			w.Header().Set("Access-Control-Allow-Origin", os.Getenv("CORS_DOM"))
 			w.Header().Set("Access-Control-Allow-Credentials", "true")
 			w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 			w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
